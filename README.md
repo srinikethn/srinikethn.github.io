@@ -1,6 +1,6 @@
 # Sriniketh Nadella
 
-**Email:** sriniketh.nadella@gmail.com  |  **Phone:** (609) 664-0000  |  **Location:** **West Windsor, New Jersey**
+**Email:** srinikethn@gmail.com  |  **Phone:** (609) 664-8994  |  **Location:** **West Windsor, New Jersey**
 
 ---
 
