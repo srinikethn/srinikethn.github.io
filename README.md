@@ -41,7 +41,7 @@ Differential Equations, Linear Algebra, Molecular Biology, Intro to Computer Sci
 classification.
 
 ---
-s
+
 ## Leadership & Activities
 
 **Biomedical Engineering Journal Club Champaign, IL                 Researcher September 2024 – Present**
