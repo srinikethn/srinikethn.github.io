@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sriniketh Nadella - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 25%, #0f3460 50%, #533483 75%, #16537e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 226, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f3460 0%, #16537e 50%, #533483 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            font-weight: 400;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info span {
+            font-size: 0.95em;
+            opacity: 0.95;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info span:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .main-content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .education-item, .experience-item, .project-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #667eea;
+            position: relative;
+        }
+
+        .education-item::before, .experience-item::before, .project-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .item-date {
+            color: #666;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        .item-subtitle {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .item-description {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            border: 1px solid #e9ecef;
+        }
+
+        .activities ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .activities li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f1f1;
+            color: #555;
+        }
+
+        .activities li:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                margin: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .main-content {
+                padding: 30px 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header class="header">
+            <h1>Sriniketh Nadella</h1>
+            <div class="subtitle">Bioengineering Student</div>
+            <div class="contact-info">
+                <span>📧 sriniketh.nadella@gmail.com</span>
+                <span>📱 (609) 664-0000</span>
+                <span>📍 West Windsor, New Jersey</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="section">
+                <h2>Professional Summary</h2>
+                <div class="item-description" style="padding-left: 20px; border-left: 3px solid #667eea; margin-bottom: 20px;">
+                    Motivated undergraduate in Bioengineering at University of Illinois at Urbana-Champaign, with hands-on experience in lab research. Proven ability to design, analyze, and present impactful technical and research projects. Adept at collaborating in multi-disciplinary teams, applying analytical skills, and leveraging advanced technology stacks to improve project outcomes. Seeking opportunities as an intern or research assistant to apply and expand technical and research expertise in a challenging, collaborative environment.
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <div class="item-header">
+                        <div class="item-title">Bachelor of Science in Bioengineering</div>
+                        <div class="item-date"><b>Expected May 2028</b></div>
+                    </div>
+                    <div class="item-subtitle">University of Illinois at Urbana-Champaign</div>
+                    <div class="item-description">
+                        <b>GPA: 3.91/4.00</b><br>
+                        <b>Honors:</b> Dean's List, James Scholar, AP Scholar with Distinction<br>
+                        <b>Relevant Coursework:</b> General Chemistry I & II, Organic Chemistry I & II, University Physics: Mechanics, University Physics: Elec & Mag, Differential Equations, Linear Algebra, Molecular Biology, Intro to Computer Science I (Java), Cellular Bioengineering
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Experience</h2>
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div class="item-title">Undergraduate Researcher</div>
+                        <div class="item-date"><b>January 2025 - Present</b></div>
+                    </div>
+                    <div class="item-subtitle">Chen Multimodality Imaging Lab, University of Illinois at Urbana-Champaign</div>
+                    <div class="item-description">
+                        Culturing and maintaining mammalian cancer cell lines under sterile conditions to test nanoparticles for targeted cancer therapy in liver cancer cells. Performing molecular biology assays including western blotting, RT-PCR, and SDS-PAGE to assess protein expression in human and animal cancer cells. Assisting with in vivo oncology studies on rats and mice by treating with nanoparticles containing medicine able to treat cancer. Collaborated with postdoctoral researchers to refine cell culture protocols, enhancing reproducibility and data integrity.
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div class="item-title">Student Researcher</div>
+                        <div class="item-date"><b>September 2022 - June 2024</b></div>
+                    </div>
+                    <div class="item-subtitle">Waksman Institute of Microbiology, Rutgers University</div>
+                    <div class="item-description">
+                        Engineered Landoltia punctata for genetic insertions, enabling functional characterization of novel DNA sequences. Utilized molecular biology techniques including micropipetting, bacterial transformation, and colony culturing to facilitate DNA purification and sequencing. Discovered and annotated novel genetic sequences from a cDNA library, providing insights into protein function and evolutionary classification.
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Leadership & Activities</h2>
+                <div class="project-item">
+                    <div class="item-header">
+                        <div class="item-title">Researcher</div>
+                        <div class="item-date"><b>September 2024 - Present</b></div>
+                    </div>
+                    <div class="item-subtitle">Biomedical Engineering Journal Club</div>
+                    <div class="item-description">
+                        Critically analyze and present peer-reviewed biomedical engineering publications on Celiac disease, focusing on advancements in biomechanics, therapeutics, and molecular biology. Synthesize findings from diverse research papers to identify emerging trends and potential applications in biomedical engineering.
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="item-header">
+                        <div class="item-title">Team Member/Researcher</div>
+                        <div class="item-date"><b>August 2025 - Present</b></div>
+                    </div>
+                    <div class="item-subtitle">SIGRobotics</div>
+                    <div class="item-description">
+                        Conduct research on robot perception, learning, and 3D computer vision to enhance advance robotic autonomous decision-making. Design and model robotic components in Fusion 360, optimizing for assembly, functionality, and real-world deployment. Develop and implement algorithms in Python using Hugging Face frameworks for 3D object detection and autonomous decision-making.
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="item-header">
+                        <div class="item-title">Strategy Team Member</div>
+                        <div class="item-date"><b>January 2025 - Present</b></div>
+                    </div>
+                    <div class="item-subtitle">Illini Solar Car</div>
+                    <div class="item-description">
+                        Develop and implement strategic race plans utilizing telemetry data and simulation tools to optimize vehicle performance during competitions. Analyze real-time data from solar array efficiency, battery levels, and environmental conditions to inform tactical decisions and enhance energy management.
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="item-header">
+                        <div class="item-title">Member</div>
+                        <div class="item-date"><b>August 2024 - Present</b></div>
+                    </div>
+                    <div class="item-subtitle">Illinois Healthcare Mentorship Group</div>
+                    <div class="item-description">
+                        Conduct outreach to physicians and healthcare professionals to build mentorship connections and gain firsthand perspectives on medical careers. Participate in mentorship sessions and workshops focused on clinical practice, professional development, and healthcare leadership.
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Technical</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">MATLAB</span>
+                            <span class="skill-tag">Microsoft Excel</span>
+                            <span class="skill-tag">Fusion 360</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Analytical/Research</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Cell Culture</span>
+                            <span class="skill-tag">PCR</span>
+                            <span class="skill-tag">Gel Electrophoresis</span>
+                            <span class="skill-tag">Western Blotting</span>
+                            <span class="skill-tag">RT-PCR</span>
+                            <span class="skill-tag">SDS-PAGE</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Communication</span>
+                            <span class="skill-tag">Collaboration</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Problem-Solving</span>
+                            <span class="skill-tag">Time Management</span>
+                            <span class="skill-tag">Adaptability</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section activities">
+                <h2>Interests</h2>
+                <ul>
+                    <li><strong>Sports:</strong> Basketball, Pickleball, Soccer</li>
+                    <li><strong>Activities:</strong> Volunteering, Cooking, Chess, Fantasy Football</li>
+                    <li><strong>Music:</strong> Rap and House Music</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
