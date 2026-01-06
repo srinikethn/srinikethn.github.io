@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sriniketh Nadella | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Sriniketh Nadella – research, engineering, and projects at the intersection of biology and computation." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Simple modern CSS reset + base styles -->
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-elevated: #0b1020;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --accent-strong: rgba(56, 189, 248, 0.25);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --chip-bg: rgba(15, 23, 42, 0.85);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.65);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --transition-fast: 150ms ease-out;
+      --transition-med: 220ms ease-out;
+      --nav-blur: blur(18px);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top left, #1f2937 0, transparent 45%),
+        radial-gradient(circle at bottom right, #0f172a 0, transparent 50%),
+        #020617;
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: var(--nav-blur);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.75), transparent);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 40%;
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: radial-gradient(circle at 30% 0%, rgba(56, 189, 248, 0.3), rgba(15, 23, 42, 0.95));
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand-name {
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-link {
+      padding: 0.28rem 0.2rem;
+      color: var(--text-muted);
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.2rem;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--accent), #a855f7);
+      opacity: 0;
+      transform: scaleX(0.7);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+    }
+
+    .nav-link:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 0.8rem;
+      color: var(--text-main);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.95));
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.6);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .nav-cta span {
+      font-size: 1rem;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.8);
+      border-color: var(--accent);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.26), rgba(15, 23, 42, 0.98));
+    }
+
+    .main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.9rem;
+      gap: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-title-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(to bottom right, var(--accent), #a855f7);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding-top: 3.5rem;
+      padding-bottom: 2.9rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .hero-kicker {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .hero-kicker-pill {
+      padding: 0.18rem 0.7rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw + 1.3rem, 2.9rem);
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+
+    .hero-highlight {
+      padding: 0.8rem 0.9rem;
+      margin-top: 0.3rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 64, 175, 0.35));
+      font-size: 0.86rem;
+      color: #e5e7eb;
+      display: flex;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .hero-highlight-label {
+      font-weight: 500;
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 0.4rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.65rem 1.1rem;
+      font-size: 0.85rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-med), border-color var(--transition-fast), color var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.35), rgba(59, 130, 246, 0.85));
+      border-color: rgba(56, 189, 248, 0.7);
+      color: #0b1120;
+      font-weight: 600;
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.8);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 46px rgba(37, 99, 235, 0.9);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.48), rgba(37, 99, 235, 0.98));
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(148, 163, 184, 0.5);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 0.7rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(30, 64, 175, 0.55);
+      background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.55), rgba(15, 23, 42, 0.96));
+    }
+
+    .hero-meta-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #4ade80;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.9);
+    }
+
+    .hero-right {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .hero-panel {
+      position: relative;
+      height: 100%;
+      border-radius: 26px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.28), rgba(15, 23, 42, 0.98));
+      box-shadow: var(--shadow-soft);
+      padding: 1.3rem 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      overflow: hidden;
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .panel-dots {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .panel-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .panel-dot:nth-child(1) { background: #f97373; }
+    .panel-dot:nth-child(2) { background: #facc15; }
+    .panel-dot:nth-child(3) { background: #22c55e; }
+
+    .hero-panel-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .hero-panel-left {
+      font-size: 0.83rem;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .hero-panel-label {
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-panel-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.72rem;
+      color: #e5e7eb;
+    }
+
+    .hero-panel-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-stat-card {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.6rem 0.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .hero-stat-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .hero-panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      padding-top: 0.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 9px rgba(34, 197, 94, 0.9);
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 2rem;
+    }
+
+    .about-text {
+      font-size: 0.95rem;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .about-highlight {
+      padding: 0.8rem 0.9rem;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.96);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .about-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin-top: 0.75rem;
+    }
+
+    .about-meta-item {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .about-meta-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+    }
+
+    .about-meta-value {
+      margin-top: 0.1rem;
+      color: #e5e7eb;
+    }
+
+    .about-card {
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 0.97));
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .about-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+    }
+
+    .badge-soft {
+      padding: 0.26rem 0.65rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+    }
+
+    .about-card-title {
+      font-size: 0.94rem;
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+
+    .about-card-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .about-card-list {
+      margin-top: 0.35rem;
+      font-size: 0.83rem;
+      color: #e5e7eb;
+      display: grid;
+      gap: 0.22rem;
+    }
+
+    /* Skills */
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .chip {
+      padding: 0.32rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: var(--chip-bg);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+    }
+
+    .chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 9px rgba(56, 189, 248, 0.9);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skills-group {
+      padding: 0.9rem 0.95rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .skills-group-title {
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-muted);
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .skills-tag {
+      padding: 0.26rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.75rem;
+      color: #e5e7eb;
+    }
+
+    /* Cards (Experience, Research, Activities) */
+
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 0.95rem 1rem;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .card-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .card-location {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      font-size: 0.84rem;
+      color: #e5e7eb;
+    }
+
+    .card-list {
+      margin-top: 0.3rem;
+      padding-left: 1rem;
+      display: grid;
+      gap: 0.22rem;
+    }
+
+    .card-list li {
+      margin-left: 0.2rem;
+    }
+
+    /* Projects */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.98));
+      padding: 0.9rem 0.9rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-med);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.98);
+      border-color: var(--accent);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.28), rgba(15, 23, 42, 0.98));
+    }
+
+    .project-tag {
+      position: absolute;
+      top: 0.65rem;
+      right: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #e5e7eb;
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .project-body {
+      font-size: 0.83rem;
+      color: #e5e7eb;
+    }
+
+    .project-tech {
+      margin-top: 0.45rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+    }
+
+    .project-link {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* Contact */
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.98));
+      padding: 1rem 1rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.88rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      font-size: 0.8rem;
+    }
+
+    .contact-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-muted);
+    }
+
+    .contact-value a {
+      color: #e5e7eb;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+
+    .contact-value a:hover {
+      color: var(--accent);
+    }
+
+    .contact-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 2.3rem;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      margin-top: 3.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer a {
+      color: var(--text-muted);
+    }
+
+    .footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .skills-grid,
+      .card-grid-2,
+      .project-grid,
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section {
+        padding-top: 3rem;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        padding: 0.7rem 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 2.8rem;
+      }
+
+      .hero-title {
+        font-size: 2.1rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- Nav -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <div class="brand-mark">SN</div>
+        <div class="brand-text">
+          <div class="brand-name">Sriniketh Nadella</div>
+          <div class="brand-tagline">Research · Engineering · Systems Thinking</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#research" class="nav-link">Research</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">
+        <span>●</span> Let’s collaborate
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Hero -->
+    <section class="section hero" id="top">
+      <div class="hero-left">
+        <div class="hero-kicker">
+          <span class="hero-kicker-pill">Student · Researcher · Engineer</span>
+          <span>Building at the biology–computation boundary</span>
+        </div>
+        <h1 class="hero-title">
+          I design systems where <span>biology, code, and hardware</span> actually talk to each other.
+        </h1>
+        <p class="hero-text">
+          I’m <strong>Sriniketh Nadella</strong>, an undergraduate engineer with a bias toward
+          hands-on experimentation and real-world constraints. I enjoy taking messy,
+          high-dimensional problems—from lab data to robotics—and turning them into
+          clear, testable systems that actually ship.
+        </p>
+        <div class="hero-highlight">
+          <div class="hero-highlight-label">Throughline</div>
+          <div>
+            I like sitting at interfaces: wet-lab and analysis, theory and implementation, sensors
+            and decisions. My best work happens when I’m allowed to blend disciplines,
+            debug assumptions, and architect the whole pipeline, not just a single piece.
+          </div>
+        </div>
+        <div class="hero-actions">
+          <!-- TODO: Replace with your real resume link -->
+          <a href="resume.pdf" class="btn-primary" target="_blank" rel="noreferrer">
+            View Resume
+          </a>
+          <!-- TODO: Replace with your GitHub -->
+          <a href="https://github.com/srinikethn" class="btn-ghost" target="_blank" rel="noreferrer">
+            GitHub Profile →
+          </a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <div class="hero-meta-dot"></div>
+            <!-- TODO: Adjust school/major as needed -->
+            <span>Undergraduate · Molecular Biology & Engineering</span>
+          </div>
+          <div class="hero-meta-item">
+            <span>Interested in: research teams, early-stage projects, technical internships</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-panel">
+          <div class="hero-panel-header">
+            <div class="panel-dots">
+              <div class="panel-dot"></div>
+              <div class="panel-dot"></div>
+              <div class="panel-dot"></div>
+            </div>
+            <span>Snapshot</span>
+          </div>
+          <div class="hero-panel-main">
+            <div class="hero-panel-left">
+              <div class="hero-panel-label">Current focus</div>
+              <div>
+                <!-- TODO: Customize to match your real current focus -->
+                Designing data-driven systems that connect experimental biology, robotics,
+                and computational modeling.
+              </div>
+              <div class="hero-panel-pill-row">
+                <span class="pill">Experiment design</span>
+                <span class="pill">Full-stack thinking</span>
+                <span class="pill">Algorithmic intuition</span>
+              </div>
+            </div>
+            <div class="hero-panel-right">
+              <div class="hero-stat-card">
+                <div class="hero-stat-label">Research & project experience</div>
+                <div class="hero-stat-value">Multi-year, multi-domain</div>
+              </div>
+              <div class="hero-stat-card">
+                <div class="hero-stat-label">Comfort zone</div>
+                <div class="hero-stat-value">Owning messy, ambiguous problems</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-panel-footer">
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              <span>Actively seeking: research + engineering collaborations</span>
+            </div>
+            <span>Open to remote & hybrid</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-title-dot"></span> About
+        </h2>
+        <p class="section-subtitle">
+          Not just what I’ve done, but how I think. This is the throughline behind my
+          lab work, robotics projects, and system design experiments.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I’ve always gravitated toward problems that refuse to stay in one discipline.
+            In the lab, that looks like tightening the connection between experiment design
+            and downstream analysis. In engineering, it means building systems where hardware,
+            perception, and decision-making are architected together instead of patched on top
+            of each other.
+          </p>
+          <p>
+            I like environments where I’m trusted with context, not just tickets. Give me
+            the constraints, the messy data, and the long-term goal—and I’ll help design
+            the interfaces, feedback loops, and technical architecture to get us there in
+            a way that’s both rigorous and maintainable.
+          </p>
+          <div class="about-highlight">
+            Over time, I’ve realized my core skill isn’t just “knowing tools”—it’s learning
+            systems fast, spotting where structure is missing, and then building the
+            scaffolding (protocols, code, or documentation) that lets a team move faster
+            without losing rigor.
+          </div>
+          <div class="about-meta">
+            <div class="about-meta-item">
+              <div class="about-meta-label">Operating style</div>
+              <div class="about-meta-value">
+                Deep work, clear communication, aggressive curiosity.
+              </div>
+            </div>
+            <div class="about-meta-item">
+              <div class="about-meta-label">What I value</div>
+              <div class="about-meta-value">
+                Honest feedback, well-defined interfaces, and problems that feel slightly
+                out of reach at first.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="about-card">
+          <div class="about-badge-row">
+            <span class="badge-soft">Research-driven</span>
+            <span class="badge-soft">System-oriented</span>
+            <span class="badge-soft">Learns in public</span>
+          </div>
+          <div>
+            <h3 class="about-card-title">Right now</h3>
+            <p class="about-card-subtitle">
+              Where I’m spending most of my attention.
+            </p>
+            <div class="about-card-list">
+              <span>• Deepening my understanding of how biological systems can be probed, modeled, and engineered.</span>
+              <span>• Building technical fluency across software, hardware, and data workflows.</span>
+              <span>• Practicing the craft of explaining complex work clearly to non-experts.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-title-dot"></span> Skills
+        </h2>
+        <p class="section-subtitle">
+          A snapshot of the tools I reach for most often. This is evolving—by design.
+        </p>
+      </div>
+
+      <div class="chips" style="margin-bottom: 1.3rem;">
+        <span class="chip"><span class="chip-dot"></span> Experimental design</span>
+        <span class="chip"><span class="chip-dot"></span> Data analysis</span>
+        <span class="chip"><span class="chip-dot"></span> Systems engineering</span>
+        <span class="chip"><span class="chip-dot"></span> Rapid prototyping</span>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skills-group">
+          <div class="skills-group-title">Technical</div>
+          <div class="skills-tags">
+            <!-- TODO: Customize tech stack -->
+            <span class="skills-tag">Python</span>
+            <span class="skills-tag">NumPy / Pandas</span>
+            <span class="skills-tag">Data visualization</span>
+            <span class="skills-tag">Basic ML</span>
+            <span class="skills-tag">Simulation</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <div class="skills-group-title">Engineering</div>
+          <div class="skills-tags">
+            <span class="skills-tag">Robotics concepts</span>
+            <span class="skills-tag">Perception pipelines</span>
+            <span class="skills-tag">Fusion 360 / CAD</span>
+            <span class="skills-tag">Sensor integration</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <div class="skills-group-title">Research & collaboration</div>
+          <div class="skills-tags">
+            <span class="skills-tag">Literature review</span>
+            <span class="skills-tag">Experimental protocols</span>
+            <span class="skills-tag">Scientific communication</span>
+            <span class="skills-tag">Team collaboration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="experience">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-title-dot"></span> Experience
+        </h2>
+        <p class="section-subtitle">
+          Places where I’ve had the chance to own real responsibilities, not just follow instructions.
+        </p>
+      </div>
+
+      <div class="card-grid-2">
+        <!-- TODO: Replace with your real experiences -->
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Undergraduate Researcher, [Lab Name]</h3>
+              <div class="card-location">[University / Institute]</div>
+            </div>
+            <div class="card-meta">
+              <div>202X – Present</div>
+              <div>Biology · Data · Systems</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="card-list">
+              <li>Designed and ran experiments to investigate [brief topic], closing the loop between protocol, data, and analysis.</li>
+              <li>Helped debug experimental pipelines by pairing wet-lab work with computational checks and visualizations.</li>
+              <li>Documented procedures and results clearly enough that other team members could reliably reproduce them.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Robotics / Engineering Projects</h3>
+              <div class="card-location">Independent & team-based work</div>
+            </div>
+            <div class="card-meta">
+              <div>Ongoing</div>
+              <div>Prototyping · Sensing · Control</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="card-list">
+              <li>Explored 3D perception and object detection, focusing on how sensing constraints impact downstream decisions.</li>
+              <li>Modeled systems with real-world constraints (power, latency, noise) instead of idealized assumptions.</li>
+              <li>Used CAD and simulation tools to iterate quickly before committing to physical builds.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-title-dot"></span> Projects
+        </h2>
+        <p class="section-subtitle">
+          A few examples of how I like to structure problems. Each project taught me something I now bring to new work.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <!-- PROJECT CARD 1 -->
+        <article class="project-card">
+          <span class="project-tag">Robotics</span>
+          <h3 class="project-title">3D Perception & Object Detection Sandbox</h3>
+          <div class="project-meta">Exploring how sensor limitations shape what a robot can reasonably understand.</div>
+          <p class="project-body">
+            Built a small experimental pipeline to simulate and visualize how different camera configurations and sensor noise
+            affect object detection performance, with the goal of making perception tradeoffs concrete instead of abstract.
+          </p>
+          <div class="project-tech">
+            <span class="pill">Python</span>
+            <span class="pill">3D geometry</span>
+            <span class="pill">Visualization</span>
+          </div>
+          <!-- TODO: Replace with actual repo link -->
+          <a href="https://github.com/srinikethn" class="project-link" target="_blank" rel="noreferrer">
+            View details →
+          </a>
+        </article>
+
+        <!-- PROJECT CARD 2 -->
+        <article class="project-card">
+          <span class="project-tag">Modeling</span>
+          <h3 class="project-title">Biology-Inspired System Models</h3>
+          <div class="project-meta">Translating experimental intuition into simple, testable models.</div>
+          <p class="project-body">
+            Created small models to approximate how changes in experimental parameters impact signal quality and interpretability,
+            helping bridge conversations between hands-on lab work and computational analysis.
+          </p>
+          <div class="project-tech">
+            <span class="pill">Python</span>
+            <span class="pill">Simulation</span>
+            <span class="pill">Data analysis</span>
+          </div>
+          <!-- TODO: Replace with actual repo link -->
+          <a href="https://github.com/srinikethn" class="project-link" target="_blank" rel="noreferrer">
+            View details →
+          </a>
+        </article>
+
+        <!-- PROJECT CARD 3 -->
+        <article class="project-card">
+          <span class="project-tag">Systems</span>
+          <h3 class="project-title">Decision Pipelines Under Constraints</h3>
+          <div class="project-meta">What “optimal” looks like when the world is noisy.</div>
+          <p class="project-body">
+            Prototyped small decision-making systems that explicitly account for latency, uncertainty, and incomplete
+            information—more like real lab or robotics environments, less like idealized problem sets.
+          </p>
+          <div class="project-tech">
+            <span class="pill">Python</span>
+            <span class="pill">Algorithms</span>
+            <span class="pill">Systems thinking</span>
+          </div>
+          <!-- TODO: Replace with actual repo link -->
+          <a href="https://github.com/srinikethn" class="project-link" target="_blank" rel="noreferrer">
+            View details →
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Research / Activities -->
+    <section class="section" id="research">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-title-dot"></span> Research & Activities
+        </h2>
+        <p class="section-subtitle">
+          Formal and informal environments where I’ve had the chance to sharpen how I think, build, and collaborate.
+        </p>
+      </div>
+
+      <div class="card-grid-2">
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Research directions</h3>
+              <div class="card-location">Intersections I’m curious about</div>
+            </div>
+            <div class="card-meta">
+              <div>Ongoing</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="card-list">
+              <li>How to build feedback loops between experiments, models, and systems-level decisions.</li>
+              <li>Ways to make complex technical work legible to collaborators from different disciplines.</li>
+              <li>Using simulation and prototyping to reduce risk before expensive experiments or builds.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Beyond coursework</h3>
+              <div class="card-location">Clubs, teams, and side projects</div>
+            </div>
+            <div class="card-meta">
+              <div>Selected highlights</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="card-list">
+              <li>Collaborated on team projects where clear interfaces and documentation made or broke progress.</li>
+              <li>Helped peers debug their own workflows—turning ad hoc scripts into reusable mini-systems.</li>
+              <li>Maintained a bias toward learning by building, not just reading.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-title-dot"></span> Contact
+        </h2>
+        <p class="section-subtitle">
+          If you’re working on something that needs careful thinking at the intersection of disciplines, I’d love to hear about it.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-card">
+          <div class="contact-row">
+            <div class="contact-label">Best way to reach me</div>
+            <div class="contact-value">
+              <!-- TODO: Replace with your actual email -->
+              <a href="mailto:srinikethn@gmail.com">srinikethn@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">
+              <a href="https://github.com/srinikethn" target="_blank" rel="noreferrer">
+                github.com/srinikethn
+              </a>
+            </div>
+          </div>
+          <!-- TODO: Add LinkedIn if applicable -->
+          <div class="contact-row">
+            <div class="contact-label">What to include</div>
+            <div class="contact-value">
+              A short description of what you’re working on, where you think I could help, and timelines.
+            </div>
+          </div>
+          <p class="contact-note">
+            I’m especially interested in roles and collaborations that let me sit at the boundary between
+            disciplines and help design systems end-to-end.
+          </p>
+        </div>
+
+        <div class="about-text">
+          <p>
+            I’m not optimizing for “as many things as possible” — I’m optimizing for environments where I can
+            learn aggressively, contribute meaningfully, and think with people who care about both rigor and clarity.
+          </p>
+          <p>
+            If that sounds like you or your team, feel free to reach out, even if there’s no formal role posted.
+            I’m always happy to explore fit, share how I think about problems, or walk through some of my work in more detail.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> · Built by Sriniketh Nadella</div>
+    <div class="footer-links">
+      <a href="#top">Back to top ↑</a>
+      <!-- TODO: Replace with real links -->
+      <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+      <a href="https://github.com/srinikethn" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Auto-update year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
